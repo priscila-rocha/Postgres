@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS teste (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR (50),
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+DROP TABLE If EXISTS teste;
+
+CREATE TABLE IF NOT EXISTS teste (
+	cpf VARCHAR (11) NOT NULL,
+	nome VARCHAR (50),
+	created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (cpf)
+);
+
+INSERT INTO teste (cpf, nome, created_at)
+VALUES ('30674315880', 'Priscila Rocha', '2021-06-25 07:05:00');
+
+
+INSERT INTO teste (cpf, nome, created_at)
+VALUES ('30674315880', 'Priscila Rocha', '2021-06-25 07:05:00') ON CONFLICT (cpf) DO NOTHING;
+
+UPDATE teste SET nome = 'Priscila F. Rocha' WHERE cpf = '30674315880';
+
+SELECT * FROM teste;
